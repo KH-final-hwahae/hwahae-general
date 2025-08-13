@@ -1,0 +1,75 @@
+.admin-genBoard-wrapper{
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.admin-genBoard-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    
+}
+.admin-genBoard-title{
+    font-size: 20px;
+    color:black;
+    font-weight: 400;
+    margin-bottom: 10px;
+
+}
+.admin-genBoard-divider{
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #cccccca9;
+    margin-bottom: 20px;
+    width: 100%;
+    border-radius: 2px;
+
+}
+.admin-genBoard-table table{
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+.admin-genBoard-table th,
+.admin-genBoard-table td {
+    text-align: center;
+    padding: 10px;
+    word-wrap: break-word; /* 길어도 줄 바꿈 */
+}
+.admin-genBoard-table th{
+    font-weight: 600;
+    color: black;
+   
+}
+.admin-genBoard-table th:nth-child(1),
+.admin-genBoard-table td:nth-child(1){ width: 5%; }
+.admin-genBoard-table th:nth-child(2),
+.admin-genBoard-table td:nth-child(2){ /* 제목 부분*/
+    width: 45%;
+    white-space: nowrap;     
+    overflow: hidden;         
+    text-overflow: ellipsis;
+    }
+.admin-genBoard-table th:nth-child(3),
+.admin-genBoard-table td:nth-child(3){ 
+    width: 25%; 
+    white-space: nowrap;      
+    overflow: hidden;         
+    text-overflow: ellipsis;
+}
+.admin-genBoard-table th:nth-child(4),
+.admin-genBoard-table td:nth-child(4){ width: 15%; }
+.admin-genBoard-table th:nth-child(5),
+.admin-genBoard-table td:nth-child(5){ width: 10%; }
+
+.admin-genBoard-table td:nth-child(2) { /*제목 부분만 클릭 가능 -> 게시글 상세보기 이동*/
+    cursor: pointer;
+}

@@ -29,3 +29,4 @@ application-*.properties
 *.class
 *.jar
 *.war
+*.exe

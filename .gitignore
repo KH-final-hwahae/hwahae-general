@@ -1,0 +1,31 @@
+# OS별 불필요 파일
+.DS_Store
+Thumbs.db
+
+# IDE 관련
+.idea/
+*.iml
+.vscode/
+
+# 빌드 결과물
+/build/
+/target/
+/out/
+
+# 의존성 캐시
+/node_modules/
+/.apt_generated/
+/.mvn/
+
+# 로그 파일
+*.log
+
+# 환경 설정 (민감 정보)
+application-*.yml
+application-*.properties
+.env
+
+# 기타
+*.class
+*.jar
+*.war

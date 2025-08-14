@@ -1,15 +1,13 @@
-.login-main-wrapper{
+.search-user-wrapper{
     display: flex;
     justify-content: center;
     align-items: center;
     width:auto;
 }
-.login-container{
-    width:40%;
-}
+
 .login-inputId, 
 .login-inputPassword,
-.login-select-loginType
+.searchUser-form
 {
     flex-direction: column;
     display: flex;
@@ -27,8 +25,7 @@
     
 }
 
-.login-inputId input,
-.login-inputPassword input{
+.searchUser-form input{
     width: 100%;
     height: 40px;
     border-radius: 10px;
@@ -36,37 +33,17 @@
     padding: 10px;
     box-sizing: border-box;
 }
-.login-inputPassword input{
-    padding: 10px 40px 10px 10px; 
-    box-sizing: border-box;
-}
-
 
 input:focus{
     outline:none;
     border: 3px solid rgba(183, 244, 247, 0.712);
 }
-.login-message{
-    font-size: 12px;
-    color: #ccc;
-    margin-top: 10px;
-    display: flex;
-    justify-content: flex-end;
-}
-.login-forgetId,
-.login-forgetPassword{
-    font-size: 12px;
-    color:  #ccc;
-    text-decoration: none;
-    margin-top: 10px;
-    display: flex;
-    justify-content: flex-end;
-}
+
 .login-forgetId,
 .login-forgetPassword:hover{
     cursor: pointer;
 }
-.login-select-loginType-container{
+.search-user-loginType-container{
     font-size: 16px;
     color: black;
     margin-top: 30px;
@@ -76,7 +53,7 @@ input:focus{
     align-items: center;
     box-sizing: border-box;
 }
-.login-select-loginType{
+.search-user-loginType{
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -91,14 +68,14 @@ input:focus{
 }
 
 /*라디오 숨기고 라벨로 대체*/
-.login-select-loginType input[type="radio"]{
+.search-user-loginType input[type="radio"]{
     position: absolute;
     appearance: none;
     opacity: 0;
     width: 0;
     height: 0;    
 }
-.login-select-loginType label{
+.search-user-loginType label{
     display: inline-block;
     padding: 10px 0;
     text-align: center;
@@ -107,11 +84,10 @@ input:focus{
     border: 2px solid #ccc;
     border-radius: 25px;
     cursor: pointer;
-    user-select: none;
     transition: all 0.2s ease;
 }
 /*선택된 라디오에 해당하는 label스타일*/
-.login-select-loginType input[type="radio"]:checked + label{
+.search-user-loginType input[type="radio"]:checked + label{
     background-color: rgba(183, 244, 247, 0.938);
     color: white;
     font-weight: 530;
@@ -125,7 +101,7 @@ input:focus{
     margin-left: 5px;
 }
 
-.login-select-loginType label{
+.search-user-loginType label{
     font-size: 16px;
 }
 

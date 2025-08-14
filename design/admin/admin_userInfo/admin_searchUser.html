@@ -9,19 +9,33 @@
 </head>
 <body>
     <main>
-        <form id="searchForm">
-            <label for="searchInput">회원 검색:</label>
-            <input type="text" id="searchInput" name="searchInput" placeholder="이름, 이메일 등">
-            <button type="submit">검색</button>
-        </form>
+        <div class="search-user-wrapper">
+            <form id="searc-userForm" class="search-user-form" action="admin/search-user" method="post">
+                <div class="search-user-selectType-container">
+                    회원 유형을 선택하세요
+                </div>
+                <div class="search-user-selectType">
+                    <div class="selectType-box">
+                        <input type="radio" id="user-partner" name="selectType" value="partner">
+                        <label for="search-user-partner">판매자</label>
+                    </div>
+                    <div class="selectType-box">
+                        <input type="radio" id="user-general" name="selectType" value="general">
+                        <label for="search-user-general">일반</label>
+                    </div>
+                </div>
+                
+                <label for="searchInput">회원 검색:</label>
+                <input type="text" id="searchInput" name="searchInput" placeholder="회원 아이디 입력">
+                <button type="submit" class="search-user-button">검색</button>
 
-        <section id="userList">
-            <!-- 사용자 목록이 여기에 표시됩니다. -->
-        </section>
+            </form>
+
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2023 관리자 시스템</p>
+        <p>&copy; 2025 관리자 시스템</p>
     </footer>
 </body>
 </html>

@@ -3,39 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자 회원 조회</title>
+    <title>관리자용 회원조회</title>
     <link rel="stylesheet" href="./admin_searchUser.css">
-    <script src="./admin_searchUser.js"></script>
+    <script src="./admin_searchUser.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
 </head>
 <body>
-    <main>
-        <div class="search-user-wrapper">
-            <form id="searc-userForm" class="search-user-form" action="admin/search-user" method="post">
-                <div class="search-user-selectType-container">
-                    회원 유형을 선택하세요
-                </div>
-                <div class="search-user-selectType">
-                    <div class="selectType-box">
-                        <input type="radio" id="user-partner" name="selectType" value="partner">
-                        <label for="search-user-partner">판매자</label>
-                    </div>
-                    <div class="selectType-box">
-                        <input type="radio" id="user-general" name="selectType" value="general">
-                        <label for="search-user-general">일반</label>
-                    </div>
-                </div>
-                
-                <label for="searchInput">회원 검색:</label>
-                <input type="text" id="searchInput" name="searchInput" placeholder="회원 아이디 입력">
-                <button type="submit" class="search-user-button">검색</button>
+    <div class="admin-searchUser-wrapper">
+        <div class="admin-searchUser-header">
+            <div class="admin-searchUser-title">회원 조회</div>
+            <div class="admin-searchUser-searchBox">
+                <form th:action="@{/board/search}" method="get">
+                    <select name="condition" class="form-select">
+                        <option value="title">회원 아이디</option>
+                        <option value="writer">가입 유형</option>
+                        <option value="content">활동 상태</option>
+                        <option value="content">누적 신고횟수</option>
+                    </select>
+                    <input type="search" name="value" class="form-control" style="width:250px; display:inline;">
+                    <button class="searchUser-btn" type="submit">
+                        <i class="ti ti-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <hr class="admin-searchUser-divider"/>
 
-            </form>
+        <div class="admin-searchUser-table">
+            <table id="admin-searchUser-table-header" class="admin-genBoard-table-header">
+                <thead>
+                    <tr>
+                        <th>가입유형</th>
+                        <th>회원 아이디</th>
+                        <th>가입일</th>
+                        <th>활동 상태</th>
+                        <th>누적 신고횟수</th>
+                    </tr>
+                </thead>
+                <tbody id="admin-searchUser-table-body" class="admin-genBoard-table-body">
+                    <tr>
+                        <td>판매자</td>
+                        <td>cosrx</td>
+                        <td>2014-03-23</td>
+                        <td>Y</td>
+                        <td>1회</td>
+                    </tr>
+                    <tr>
+                        <td>판매자</td>
+                        <td>rainbowmansion</td>
+                        <td>2014-03-23</td>
+                        <td>Y</td>
+                        <td>2회</td>
+                    </tr>
+                    <tr>
+                        <td>일반</td>
+                        <td>kim44</td>
+                        <td>2014-03-23</td>
+                        <td>N</td>
+                        <td>7회</td>
+                    </tr>
+                    <tr>
+                        <td>일반</td>
+                        <td>luv1004</td>
+                        <td>2025-07-23</td>
+                        <td>Y</td>
+                        <td>1회</td>
+                    </tr>
+                    <tr>
+                        <td>판매자</td>
+                        <td>rom&nd</td>
+                        <td>2023-12-01</td>
+                        <td>Y</td>
+                        <td>0회</td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul class="admin-board-pagination">
+                <li class="admin-board-page-item">&laquo;</li>
+                <li class="admin-board-page-item active">1</li>
+                <li class="admin-board-page-item">2</li>
+                <li class="admin-board-page-item">3</li>
+                <li class="admin-board-page-item">4</li>
+                <li class="admin-board-page-item">5</li>
+                <li class="admin-board-page-item">&raquo;</li>
+            </ul>
+
+
+
 
         </div>
-    </main>
 
-    <footer>
-        <p>&copy; 2025 관리자 시스템</p>
-    </footer>
+
+
+
+        
+    </div>
+
+
+
 </body>
 </html>

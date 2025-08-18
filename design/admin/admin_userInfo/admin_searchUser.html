@@ -13,7 +13,7 @@
         <div class="admin-searchUser-header">
             <div class="admin-searchUser-title">회원 조회</div>
             <div class="admin-searchUser-searchBox">
-                <form th:action="@{/board/search}" method="get">
+                <form th:action="@{/searchUser/search}" method="get">
                     <select name="condition" class="form-select">
                         <option value="title">회원 아이디</option>
                         <option value="writer">가입 유형</option>
@@ -78,14 +78,14 @@
                     </tr>
                 </tbody>
             </table>
-            <ul class="admin-board-pagination">
-                <li class="admin-board-page-item">&laquo;</li>
-                <li class="admin-board-page-item active">1</li>
-                <li class="admin-board-page-item">2</li>
-                <li class="admin-board-page-item">3</li>
-                <li class="admin-board-page-item">4</li>
-                <li class="admin-board-page-item">5</li>
-                <li class="admin-board-page-item">&raquo;</li>
+            <ul class="admin-searchUser-pagination">
+                <li class="admin-searchUser-page-item">&laquo;</li>
+                <li class="admin-searchUser-page-item active">1</li>
+                <li class="admin-searchUser-page-item">2</li>
+                <li class="admin-searchUser-page-item">3</li>
+                <li class="admin-searchUser-page-item">4</li>
+                <li class="admin-searchUser-page-item">5</li>
+                <li class="admin-searchUser-page-item">&raquo;</li>
             </ul>
 
 

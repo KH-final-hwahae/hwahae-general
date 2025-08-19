@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>쇼핑몰 예제</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: "Noto Sans KR", sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        /* 헤더 */
+        header {
+            border-bottom: 1px solid #e0e0e0;
+            margin: 0px auto;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: #333;
+            text-decoration: none;
+        }
+
+        /* 상단 로그인/회원가입 등 */
+        .top-links {
+            font-size: 0.8rem;
+        }
+
+        .top-links a {
+            color: #555;
+            margin-left: 12px;
+            text-decoration: none;
+        }
+
+        /* 검색창 */
+        .search-bar {
+            flex: 1;
+            max-width: 600px;
+            margin: 10px auto;
+            /* 중앙 배치 */
+        }
+
+        .search-bar input {
+            border: 2px solid #6ec1e4;
+        }
+
+        .search-bar button {
+            background-color: #6ec1e4;
+            border: none;
+        }
+
+        /* 네비게이션 */
+        .navbar-nav .nav-link {
+            font-weight: 600;
+            color: #333;
+            margin-right: 20px;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #6ec1e4;
+        }
+
+        /* 구분선 */
+        .navbar {
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* 드롭다운 */
+        .dropdown-mega {
+            position: static;
+        }
+
+        .dropdown-menu.mega-menu {
+            width: 100%;
+            left: 0;
+            right: 0;
+            top: 100%;
+            border-radius: 0;
+            padding: 20px;
+        }
+
+        .mega-menu .col {
+            padding: 10px;
+        }
+
+        /* 상품 카드 */
+        .product-card {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: #6ec1e4;
+        }
+
+        .product-image {
+            background-color: #f8f9fa;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .filter-btn.active {
+            background-color: #0d6efd !important;
+            color: white !important;
+        }
+
+        /* 푸터 */
+        footer {
+            background-color: #222;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 상단 헤더 -->
+    <header>
+        <div class="container py-1 d-flex justify-content-end">
+            <div class="top-links">
+                <a href="#">회원가입</a>
+                <a href="#">로그인</a>
+                <a href="#">장바구니</a>
+                <a href="#">주문배송</a>
+                <a href="#">고객센터</a>
+            </div>
+        </div>
+
+        <div class="container d-flex justify-content-between align-items-center py-2">
+            <!-- 로고 -->
+            <a href="#" class="logo">화 해</a>
+
+            <!-- 검색창 -->
+            <form class="d-flex search-bar" action="/search">
+                <div class="input-group">
+                    <input class="form-control" type="search" name="q" placeholder="상품, 브랜드, 성분 검색"
+                        aria-label="Search" />
+                    <button class="btn btn-primary" type="submit">검색</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- 네비게이션 -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <div class="container">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item dropdown dropdown-mega">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarMega" role="button"
+                            data-bs-toggle="dropdown">카테고리</a>
+                        <div class="dropdown-menu mega-menu shadow-lg" aria-labelledby="navbarMega">
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="text-primary">스킨케어</h6>
+                                    <a class="dropdown-item" href="#">스킨/토너</a>
+                                    <a class="dropdown-item" href="#">에센스/앰플</a>
+                                </div>
+                                <div class="col">
+                                    <h6 class="text-primary">메이크업</h6>
+                                    <a class="dropdown-item" href="#">립메이크업</a>
+                                    <a class="dropdown-item" href="#">아이메이크업</a>
+                                </div>
+                                <div class="col">
+                                    <h6 class="text-primary">헤어케어</h6>
+                                    <a class="dropdown-item" href="#">샴푸/린스</a>
+                                    <a class="dropdown-item" href="#">트리트먼트</a>
+                                </div>
+                                <div class="col">
+                                    <h6 class="text-primary">건강식품</h6>
+                                    <a class="dropdown-item" href="#">비타민</a>
+                                    <a class="dropdown-item" href="#">영양제</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">랭킹</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">헬스+</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">체험단</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">기프트카드</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">쿠폰</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">이벤트</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">커뮤니티</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+
+    <form id="filterForm" method="get" action="/filter">
+        <!-- 기존 검색어를 hidden으로 넣는 곳 (예: searchTerm) -->
+        <input type="hidden" name="q" value="검색어예시" />
+
+        <section class="container py-4">
+            <h3>검색 결과 필터</h3>
+            <div class="filter-section border rounded p-3 bg-white">
+
+                <!-- 카테고리 필터 -->
+                <div class="mb-3">
+                    <strong>카테고리:</strong>
+                    <button type="button" class="btn btn-outline-primary btn-sm mx-1 mb-1 filter-btn"
+                        data-filter-name="category" data-filter-value="헤어케어">헤어케어</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm mx-1 mb-1 filter-btn"
+                        data-filter-name="category" data-filter-value="바디케어">바디케어</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm mx-1 mb-1 filter-btn"
+                        data-filter-name="category" data-filter-value="맨즈케어">맨즈케어</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm mx-1 mb-1 filter-btn"
+                        data-filter-name="category" data-filter-value="리빙/가전">리빙/가전</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm mx-1 mb-1 filter-btn"
+                        data-filter-name="category" data-filter-value="뷰티소품">뷰티소품</button>
+                </div>
+
+                <!-- 브랜드 필터 -->
+                <div class="mb-3">
+                    <strong>브랜드:</strong>
+                    <button type="button" class="btn btn-outline-secondary btn-sm mx-1 mb-1 filter-btn"
+                        data-filter-name="brand" data-filter-value="바티스트">바티스트</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm mx-1 mb-1 filter-btn"
+                        data-filter-name="brand" data-filter-value="라우쉬">라우쉬</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm mx-1 mb-1 filter-btn"
+                        data-filter-name="brand" data-filter-value="케라스타즈">케라스타즈</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm mx-1 mb-1 filter-btn"
+                        data-filter-name="brand" data-filter-value="닥터포헤어">닥터포헤어</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm mx-1 mb-1 filter-btn"
+                        data-filter-name="brand" data-filter-value="라보에이치">라보에이치</button>
+                </div>
+
+                <!-- 혜택 필터 -->
+                <div class="mb-3">
+                    <strong>혜택:</strong>
+                    <button type="button" class="btn btn-outline-success btn-sm mx-1 mb-1 filter-btn"
+                        data-filter-name="benefit" data-filter-value="쿠폰상품">쿠폰상품</button>
+                    <button type="button" class="btn btn-outline-success btn-sm mx-1 mb-1 filter-btn"
+                        data-filter-name="benefit" data-filter-value="세일상품">세일상품</button>
+                    <button type="button" class="btn btn-outline-success btn-sm mx-1 mb-1 filter-btn"
+                        data-filter-name="benefit" data-filter-value="1+1">1+1</button>
+                    <button type="button" class="btn btn-outline-success btn-sm mx-1 mb-1 filter-btn"
+                        data-filter-name="benefit" data-filter-value="2+1">2+1</button>
+                    <button type="button" class="btn btn-outline-success btn-sm mx-1 mb-1 filter-btn"
+                        data-filter-name="benefit" data-filter-value="증정상품">증정상품</button>
+                    <button type="button" class="btn btn-outline-success btn-sm mx-1 mb-1 filter-btn"
+                        data-filter-name="benefit" data-filter-value="무료배송">무료배송</button>
+                </div>
+
+                <!-- 가격 필터 -->
+                <div class="mb-3 d-flex align-items-center gap-2">
+                    <strong>가격:</strong>
+                    <input type="number" class="form-control form-control-sm" name="priceMin" id="priceMin"
+                        placeholder="최소" style="max-width: 100px;" />
+                    <span>~</span>
+                    <input type="number" class="form-control form-control-sm" name="priceMax" id="priceMax"
+                        placeholder="최대" style="max-width: 100px;" />
+                    <button type="submit" class="btn btn-outline-dark btn-sm">적용</button>
+                </div>
+
+                <!-- 선택된 필터 표시 -->
+                <div>
+                    <strong>선택된 필터:</strong>
+                    <div id="selectedFilters" class="mt-2"></div>
+                </div>
+            </div>
+        </section>
+    </form>
+
+
+    <!-- 베스트셀러 -->
+    <section class="container py-5">
+        <h2 class="mb-4">가장 많이 팔린 상품</h2>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="product-card p-3">
+                    <div class="product-image">이미지1</div>
+                    <h5 class="mt-3">상품명 1</h5>
+                    <p>상품 설명 1</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card p-3">
+                    <div class="product-image">이미지2</div>
+                    <h5 class="mt-3">상품명 2</h5>
+                    <p>상품 설명 2</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card p-3">
+                    <div class="product-image">이미지3</div>
+                    <h5 class="mt-3">상품명 3</h5>
+                    <p>상품 설명 3</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="product-card p-3">
+                    <div class="product-image">이미지4</div>
+                    <h5 class="mt-3">상품명 4</h5>
+                    <p>상품 설명 4</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="py-4">
+        <div class="container text-center">
+            <p>© 2025 쇼핑몰 예제. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const q = params.get('q') || ''; // URL에서 q 파라미터 가져오기
+            const input = document.getElementById('searchTermInput');
+            if (input) {
+                input.value = q;
+            }
+        });
+
+        const filterForm = document.getElementById('filterForm');
+        const selectedFiltersContainer = document.getElementById('selectedFilters');
+
+        // 현재 폼 내 hidden input 들을 관리하는 객체 (필터명 -> Set of 값)
+        const currentFilters = {};
+
+        // 기존 쿼리값이 있으면 초기화 하는 부분은 서버에서 넣어주거나 JS로 할 수 있음 (여기선 임시로 초기화 없이 시작)
+
+        // 필터 버튼 클릭 이벤트
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const name = btn.dataset.filterName;
+                const value = btn.dataset.filterValue;
+
+                if (!currentFilters[name]) {
+                    currentFilters[name] = new Set();
+                }
+
+                if (currentFilters[name].has(value)) {
+                    // 이미 선택된 필터면 해제
+                    currentFilters[name].delete(value);
+                    btn.classList.remove('active');
+                } else {
+                    currentFilters[name].add(value);
+                    btn.classList.add('active');
+                }
+
+                updateFormInputs();
+                updateSelectedFiltersUI();
+                // submit 안함, 직접 버튼 누를 때 submit 됨
+                // 이걸 넣으면 필터 클릭시 자동 제출 됨
+                filterForm.submit();
+            });
+        });
+
+        function updateFormInputs() {
+            // 기존 hidden inputs 모두 삭제 (name이 필터 이름과 일치하는 input)
+            Object.keys(currentFilters).forEach(name => {
+                // 삭제
+                [...filterForm.querySelectorAll(`input[type=hidden][name="${name}"]`)].forEach(el => el.remove());
+            });
+
+            // currentFilters 기반으로 hidden input 추가
+            Object.entries(currentFilters).forEach(([name, values]) => {
+                values.forEach(value => {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = name; // get 방식으로 배열 처리하려면 name="category"를 category[]=value 형식으로 바꾸셔도 됨
+                    input.value = value;
+                    filterForm.appendChild(input);
+                });
+            });
+        }
+
+        // 선택된 필터 표시 업데이트
+        function updateSelectedFiltersUI() {
+            selectedFiltersContainer.innerHTML = '';
+            Object.entries(currentFilters).forEach(([name, values]) => {
+                values.forEach(value => {
+                    const badge = document.createElement('span');
+                    badge.className = 'badge bg-primary me-2';
+                    badge.style.cursor = 'pointer';
+                    badge.textContent = `${name}: ${value} ✕`;
+                    badge.title = '필터 해제';
+                    badge.addEventListener('click', () => {
+                        // 필터 해제 시 버튼 active 해제 및 currentFilters 변경 후 UI 갱신
+                        currentFilters[name].delete(value);
+                        // 버튼 클래스 제거
+                        const btn = filterForm.querySelector(`button[data-filter-name="${name}"][data-filter-value="${value}"]`);
+                        if (btn) btn.classList.remove('active');
+                        updateFormInputs();
+                        updateSelectedFiltersUI();
+                    });
+                    selectedFiltersContainer.appendChild(badge);
+                });
+            });
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
